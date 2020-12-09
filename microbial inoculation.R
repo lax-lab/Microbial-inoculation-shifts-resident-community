@@ -1,5 +1,4 @@
-setwd("E:/onedrive/小论文/光合菌Rre")
-#phylum求和
+#phylum sum
 data=read.table("clipboard",row.names = 1,header=T,sep='\t')
 sum_phylum=aggregate( .~ phylum, data = data, sum)
 sum_phylum=sum_phylum[,1:13]
@@ -19,9 +18,8 @@ p<-ggplot(data,aes(variable_o,value,fill=phylum_o))+
   theme(axis.text.x = element_text(size=13,angle = 30, hjust= 1, vjust = 1),axis.text.y = element_text(size=13))+
   theme(axis.title.y = element_text(size = 15))
 graph2ppt(file="figs by xiao.pptx", width=4, height=3,append =TRUE)
-##微生物酶活
+##enzymatic activity
 data=read.table("clipboard",header=T,sep='\t')
-
 data$Treatment_o = factor(data$Treatment, levels=c('Control','R.palustris','B.subtilis', 'Mix'))
 data1=subset(data,Enzyme== "Shannon diversity")
 p1=ggplot(data1,aes(x=Treatment_o,y=Mean))+
